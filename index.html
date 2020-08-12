@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express App</title>
+    <style>
+        li{
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>require express ---> <strong>const express = require('express')</strong> / setup express app ---> <strong>const app = express()</strong> / listen for requests ---> <strong>app.listen(port number)</strong></li>
+        <li>respond to 'get request' ---> <strong>app.get(url, (req, res)=>{ res.send(relative path, {root:__dirname}) })</strong></li>
+        <li>for redirects ---> <strong>app.get(url, (req, res)=>{ res.redirect(url) })</strong></li>
+        <li>404 file ---> <strong>app.use((req, res)=>{ res.status(404).sendFile(url, {root:__dirname}) })</strong></li>
+        <li>install ejs ---> <strong>npm install ejs</strong> / setup ---> <strong>app.set('view engine', 'ejs') ---> app.set('views', foldername)</strong></li>
+        <li>change 'sendFile' to 'render' / change 'html' extension to 'ejs' / add title tag ---> <strong>res.render(file, {title: 'text'})</strong></li>
+        <li>create 'partials' folder inside 'views' folder, then pass content ---> <strong><%-include(relative url) %></strong></li>
+        <li>use middleware to upload static files ---> <strong>app.use(express.static(folder))</strong></li>
+        <li>build cluster on mongo atlas</li>
+        <li>create database and collection inside that database ---> CONNECT METRICS <strong>COLLECTIONS(click)</strong></li>
+        <li>create new database user ---> enter name and password / read and write to any database</li>
+        <li>connect to db ---> <strong>CONNECT(click) </strong> METRICS COLLECTIONS / <strong>Connect your application</strong> copy dbURI</li>
+        <li>install and require mongoose ---> <strong>npm install mongoose / const mongoose = require('mongoose')</strong></li>
+        <li>connect to mongoose ---> <strong>mongoose.connect(dbURI).then(()=>{ console.log('msg')</strong> / move app.listen to this function <strong>}).catch((err)=>{ console.log(err) })</strong></li>
+        <li>create new folder for Schema and Models ---> models</li>
+        <li>require mongoose, then create Schema ---> <strong>const mongoose = require('mongoose') / const Schema = mongoose.Schema</strong> (constructor function)</li>
+        <li>create new schema ---> <strong>const blogSchema = new Schema({<br />
+            title:{<br />
+                type:String,<br />
+                required:true<br />
+            },<br />
+            etc etc
+        }, {timestamps:true})</strong></li>
+        <li>create model and export---> <strong>const Blog = mongoose.model('Blog', blogSchema) / module.exports = Blog</strong> / </li>
+        <li>require Blog in app.js</li>
+        <li>method for saving a blog ---> <strong>const blog = new Blog({</strong>....fill out schema properties<strong>}).then().catch(err=>console.log(err))</strong></li>
+        <li>method to find all blogs ---> <strong>Blog.find().then().catch(err=>console.log(err))</strong></li>
+        <li>method to find single blog ---> <strong>Blog.findById('id').then().catch(err=>console.log(err))</strong></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</body>
+</html>
