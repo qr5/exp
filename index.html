@@ -18,7 +18,7 @@
         <li>install ejs ---> <strong>npm install ejs</strong> / setup ---> <strong>app.set('view engine', 'ejs') ---> app.set('views', foldername)</strong></li>
         <li>change 'sendFile' to 'render' / change 'html' extension to 'ejs' / add title tag ---> <strong>res.render(file, {title: 'text'})</strong></li>
         <li>create 'partials' folder inside 'views' folder, then pass content ---> <strong><%-include(relative url) %></strong></li>
-        <li>use middleware to upload static files ---> <strong>app.use(express.static(folder))</strong></li>
+        <li>use middleware to upload static files ---> <strong>app.use(express.static(__dirname + "/folder"))</strong></li>
         <li>build cluster on mongo atlas</li>
         <li>create database and collection inside that database ---> CONNECT METRICS <strong>COLLECTIONS(click)</strong></li>
         <li>create new database user ---> enter name and password / read and write to any database</li>
@@ -36,12 +36,13 @@
         }, {timestamps:true})</strong></li>
         <li>create model and export---> <strong>const Blog = mongoose.model('Blog', blogSchema) / module.exports = Blog</strong> / </li>
         <li>require Blog in app.js</li>
-        <li>method for saving a blog ---> <strong>const blog = new Blog({</strong>....fill out schema properties<strong>}) / blog.save().then().catch(err=>console.log(err))</strong></li>
-        <li>method to find all blogs ---> <strong>Blog.find().then().catch(err=>console.log(err))</strong></li>
-        <li>method to find single blog ---> <strong>Blog.findById('id').then().catch(err=>console.log(err))</strong></li>
+        <li>method for saving a blog ---> <strong>const blog = new Blog({</strong>....fill out schema properties<strong>}) / blog.save().then(</strong>---- ASYNC ----<strong></strong>).catch(err=>console.log(err))</strong></li>
+        <li>method to find all blogs ---> <strong>Blog.find().then(</strong>---- ASYNC ----<strong>).catch(err=>console.log(err))</strong></li>
+        <li>method to find single blog ---> <strong>Blog.findById('id').then(</strong>---- ASYNC ----<strong></strong>).catch(err=>console.log(err))</strong></li>
         <li>add url encoded middleware ---> <strong>app.use(express.urlencoded({extended:true}))</strong></li>
-        <li>create 'post' request ---> <strong>app.post(url, ()=>{})</strong></li>
-        <li></li>
+        <li>create 'post' request ---> <strong>app.post(url, (req, res)=>{<br />
+            create a 'new Blog', put it in a constant, model it after the 'schema'.<br />
+        })</strong> ---> save the blog ---> blog.save().then(()=>{  render page  }).catch()</li>
         <li></li>
         <li></li>
     </ol>
